@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>prueba</title>
+    <script type="text/javascript">
+      window.onload=function () {
+        var audio=document.getElementById('audio');
+        audio.volumen = document.getElementById('volumen').value;
+
+        document.getElementById('play').onclick = function () {audio.play()}
+        document.getElementById('pause').onclick = function () {audio.pause()}
+        document.getElementById('stop').onclick = function () {audio.load()}
+        document.getElementById('volumen').onchange = function (e) {audio.volumen = e.target.value}
+        audio.ontimeupdate = function () {
+        document.getElementById('time').max=audio.duration;
+        document.getElementById('id').value=audio.currentTime;
+        }
+        document.getElementById('cancion').innerHTML = audio.currentSrc;
+        }
+    </script>
+  </head>
+  <body>
+    <div id="reproductor">
+      <button type="button" id="play">play</button>
+      <button type="button" id="pause">pause</button>
+      <button type="button" id="stop">stop</button>
+      <p>volumen <input type="range" id="volumen" value="1" min="0" max="1" step=".1"></p>
+      <p>tiempo <input type="range" id="" value=""></p>
+      <p>cancion <strong id="cancion"></strong></p>
+    </div>
+    <audio id="audio" controls>
+      <source src="C:\Users\fagud\Documents\Demetori\Demetori   メイドと血の懐中時計.mp3" type="audio/mpeg">
+    </audio>
+  </body>
+</html>

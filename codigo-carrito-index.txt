@@ -1,0 +1,59 @@
+  <!--        @foreach($products as $product)
+          print_r($product)
+          /*<li class="list-group-item">
+            <span class="badge">{{ $product['qty'] }}</span>
+            <strong>{{ $product['item']['title'] }}</strong>
+            <span class="label label-success">{{ $product['price']}}</span>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-xs dropdown-toogle" data-toggle="dropdown">Action <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Reduce by 1</a></li>
+                <li><a href="#">Reduce All</a></li>
+              </ul>
+
+            </div>
+
+          </li>*/-->
+  <!--  @endforeach
+        </ul>
+      </div>
+    </div>-->
+
+
+  <hr>
+
+            <h2>My Orders</h2>
+
+            @foreach($products as $product)
+
+                <div class="panel panel-default">
+
+                    <div class="panel-body">
+
+                        <ul class="list-group">
+
+                            @foreach($product->cart->items as $item)
+
+                                <li class="list-group-item">
+
+                                    <span class="badge">${{ $item['price'] }}</span>
+
+                                    {{ $item['item']['title'] }} | {{ $item['qty'] }} Units
+
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+
+                    <div class="panel-footer">
+
+                        <strong>Total Price: ${{ $order->cart->totalPrice }}</strong>
+
+                    </div>
+
+                </div>
+
+            @endforeach
